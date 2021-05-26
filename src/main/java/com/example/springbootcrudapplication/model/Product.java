@@ -13,7 +13,7 @@ public class Product {
     private String madein;
     private float price;
 
-    protected Product(){
+    public Product(){
 
     }
 
