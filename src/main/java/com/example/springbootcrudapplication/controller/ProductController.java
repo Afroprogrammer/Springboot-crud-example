@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 @Controller
@@ -34,5 +36,16 @@ public class ProductController {
         return "redirect:/";
 
   }
-
+    @RequestMapping("/edit/{id}")
+    public ModelAndView showEditProductForm(@PathVariable(name = "id") Long id) {
+   ModelAndView mav = new ModelAndView("edit_product");
+   Product product = productService.get(id);
+   mav.addObject("product", product);
+        return mav;
+    }
+    @RequestMapping("/delete/{id}")
+    public  String deleteProduct(@PathVariable(name = "id") Long id){
+        productService.delete(id);
+        return "redirect:/";
+    }
 }

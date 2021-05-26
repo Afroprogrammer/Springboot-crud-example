@@ -10,7 +10,7 @@
    <h1> Product Manager </h1>
         <a href="new"> Create New Product</a>
         <br/> <br/>
-        <table border="2">
+        <table border="1" cellpadding="10">
             <thead>
              <tr>
                  <th> Product ID</th>
@@ -18,7 +18,7 @@
                  <th> Brand </th>
                  <th> Made In</th>
                  <th> Price</th>
-                 <th> Actions</th>
+                 <th colspan="2"> Actions</th>
              </tr>
             </thead>
 
@@ -30,6 +30,11 @@
                 <td th:text="${product.madein}"> Made In</td>
                 <td th:text="${product.price}"> Price</td>
                 <td>
+                    <a th:href="@{'/edit/' + ${product.id}}"> Edit </a>
+                </td>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <td>
+                    <a th:href="@{'/delete/' + ${product.id}}"> Delete </a>
                 </td>
             </tr>
             </tbody>
